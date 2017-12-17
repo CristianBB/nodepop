@@ -24,6 +24,10 @@ Dentro del directorio nodepop ejecutar:
 - PORT: Puerto de escucha de la API
 3. Cargar datos iniciales (opcional): `npm run installBD`
 
+### Arranque del servicio
+Desde el directorio nodepop, ejecutar:
+`npm run start`
+
 ## Operaciones permitidas
 **Nota:** Todas las peticiones admiten la cabecera *Accept-Language* para especificar el lenguaje de los mensajes de error de respuesta. Los lenguajes admitidos son: **es**(Español), **en**(Inglés). En caso de que la cabecera no sea informada o su valor sea distinto a los lenguajes admitidos, los mensajes de respuesta serán enviados en inglés.
 

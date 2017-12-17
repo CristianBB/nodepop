@@ -1,0 +1,16 @@
+{
+    "USER_NOT_FOUND": "El usuario no existe",
+    "INVALID_PASS": "Password incorrecta",
+    "ERR_CREATE_TOKEN": "Error creando Token de usuario",
+    "PARM_NAME": "Parámetro Nombre no informado",
+    "PARM_EMAIL": "Parámeto Email no informado",
+    "PARM_EMAIL_FORMAT": "Formato de Email inválido",
+    "PARM_PASS": "Parámetro Clave no informado",
+    "USER_EXISTS": "El usuario ya existe",
+    "ERR_CREATE_USER": "Error creando Usuario",
+    "ERR_GET_ADS": "Error obteniendo listado de anuncios",
+    "ERR_GET_TAGS": "Error obteniendo listado de tags",
+    "NO_TOKEN": "Parámetro Token no informado",
+    "INVALID_TOKEN": "Token de usuario inválido",
+    "ERR_GET_USER": "Se produco un error obteniendo usuario"
+}

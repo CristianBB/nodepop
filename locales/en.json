@@ -1,0 +1,16 @@
+{
+    "USER_NOT_FOUND": "User doesn't exists",
+    "INVALID_PASS": "Invalid Password",
+    "ERR_CREATE_TOKEN": "Error generating User Token",
+    "PARM_NAME": "Missing parm: 'Nombre' not defined",
+    "PARM_EMAIL": "Missing parm: 'Email' not defined",
+    "PARM_EMAIL_FORMAT": "Invalid Email format",
+    "PARM_PASS": "Missing parm: 'Clave' not defined",
+    "USER_EXISTS": "User already exists",
+    "ERR_CREATE_USER": "Error creating Usuario",
+    "ERR_GET_ADS": "Error getting ad list",
+    "ERR_GET_TAGS": "Error getting tag list",
+    "NO_TOKEN": "Missing parm: Token not defined",
+    "INVALID_TOKEN": "Invalid User Token",
+    "ERR_GET_USER": "Error getting User"
+}

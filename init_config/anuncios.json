@@ -1,0 +1,38 @@
+{
+    "anuncios": [{
+            "nombre": "Bicicleta",
+            "venta": true,
+            "precio": 230.15,
+            "foto": "images/anuncios/bici.jpg",
+            "tags": ["lifestyle", "motor"]
+        },
+        {
+            "nombre": "iPhone 3GS",
+            "venta": false,
+            "precio": 50.00,
+            "foto": "images/anuncios/iphone.png",
+            "tags": ["lifestyle", "mobile"]
+        },
+        {
+            "nombre": "Macbook Pro 13'",
+            "venta": true,
+            "precio": 1500.00,
+            "foto": "images/anuncios/macbook13.png",
+            "tags": ["work", "lifestyle"]
+        },
+        {
+            "nombre": "Macbook Pro 15'",
+            "venta": true,
+            "precio": 2800.00,
+            "foto": "images/anuncios/macbook15.png",
+            "tags": ["work", "lifestyle"]
+        },
+        {
+            "nombre": "Hoverboard Scooter",
+            "venta": false,
+            "precio": 189.00,
+            "foto": "images/anuncios/hoverboard.png",
+            "tags": ["motor", "mobile"]
+        }
+    ]
+}

@@ -9,7 +9,6 @@ require('dotenv').config();
 var app = require('../app');
 var debug = require('debug')('nodepop:server');
 var http = require('http');
-const cluster = require('cluster');
 
 /**
  * Get port from environment and store in Express.
@@ -18,38 +17,19 @@ const cluster = require('cluster');
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-// Control de cluster
-if (cluster.isMaster) {
-    const numCPUs = require('os').cpus().length;
+/**
+ * Create HTTP server.
+ */
 
-    cluster.on('listening', (worker, address) => {
-        console.log(`Worker ${worker.id} con PID ${worker.process.pid} conectado a puerto ${address.port}`);
-    });
+var server = http.createServer(app);
 
-    cluster.on('exit', (worker, code, signal) => {
-        console.log(`Worker ${worker.id} con PID ${worker.process.pid} ha sido detenido con código ${code} y señal ${signal}`);
-        console.log('Arrancando nuevo worker');
-        cluster.fork();
-    });
+/**
+ * Listen on provided port, on all network interfaces.
+ */
 
-    for (let i = 0; i < numCPUs; i++) {
-        cluster.fork(); //Crea un clon (fork) de sí mismo por cada core del ordenador
-    }
-} else {
-    /**
-     * Create HTTP server.
-     */
-
-    var server = http.createServer(app);
-
-    /**
-     * Listen on provided port, on all network interfaces.
-     */
-
-    server.listen(port);
-    server.on('error', onError);
-    server.on('listening', onListening);
-}
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.

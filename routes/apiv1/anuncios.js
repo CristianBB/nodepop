@@ -6,8 +6,8 @@ const jwtAuth = require('../../lib/jwtauth');
 const parseFilter = require('../../lib/parseFilter');
 const myError = require('../../lib/myError');
 
-// Cargar el modelo de Agente
-const Agente = require('../../models/Anuncio');
+// Cargar el modelo de Anunacio
+const Anuncio = require('../../models/Anuncio');
 
 /**
  * GET /
@@ -21,7 +21,7 @@ router.get('/', jwtAuth(), async(req, res, next) => {
         const filter = parseFilter(req);
 
         //Realiza la consulta
-        const rows = await Agente.list(filter, limit, start, sort);
+        const rows = await Anuncio.list(filter, limit, start, sort);
 
         //Devuelve resultado
         res.json({ success: true, result: rows });
@@ -37,7 +37,7 @@ router.get('/', jwtAuth(), async(req, res, next) => {
  */
 router.get('/tags', async(req, res, next) => {
     try {
-        const tagList = await Agente.tagList();
+        const tagList = await Anuncio.tagList();
         res.json({ success: true, result: tagList });
     } catch (err) {
         next(myError(res.__('ERR_GET_TAGS') + ": " + err.message, 500));

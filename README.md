@@ -24,6 +24,10 @@ Dentro del directorio nodepop ejecutar:
 - PORT: Puerto de escucha de la API
 3. Cargar datos iniciales (opcional): `npm run installBD`
 
+### Arranque del servicio
+Desde el directorio nodepop, ejecutar:
+`npm run start`
+
 ## Operaciones permitidas
 **Nota:** Todas las peticiones admiten la cabecera *Accept-Language* para especificar el lenguaje de los mensajes de error de respuesta. Los lenguajes admitidos son: **es**(Español), **en**(Inglés). En caso de que la cabecera no sea informada o su valor sea distinto a los lenguajes admitidos, los mensajes de respuesta serán enviados en inglés.
 
@@ -51,7 +55,7 @@ Realiza petición de Login en el sistema para obtener Token de usuario, necesari
     - **clave**: (Obligatorio) Password del usuario a loguear
 - Ejemplo:
     - Petición: `http://localhost:3000/apiv1/usuarios/authenticate`
-    - Respuesta: `{"success":true,"result":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWEzNjg2ODYyMjQ3NDY1N2E1ZTI0MDVlIiwiaWF0IjoxNTEzNTI2MTU2LCJleHAiOjE1MTM2OTg5NTZ9.Fw18OoAzk2JMRcolXREbzlxCIAD0GCPET3f_X9EvPm0"}`
+    - Respuesta: ` {"success":true,"result":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWEzNjg2ODYyMjQ3NDY1N2E1ZTI0MDVlIiwiaWF0IjoxNTEzNTI2MTU2LCJleHAiOjE1MTM2OTg5NTZ9.Fw18OoAzk2JMRcolXREbzlxCIAD0GCPET3f_X9EvPm0"}`
 
 ### Lista de Anuncios
 Devuelve el listado de anuncios que cumplan las condiciones informadas por parámetros
@@ -76,7 +80,7 @@ Devuelve el listado de anuncios que cumplan las condiciones informadas por pará
 
 - Ejemplo:
     - Petición: `http://localhost:3000/apiv1/anuncios?start=0&limit=5&sort=precio&tags=lifestyle&tags=work&venta=true&precio=-1500&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWEzNjg2ODYyMjQ3NDY1N2E1ZTI0MDVlIiwiaWF0IjoxNTEzNTIzNjc1LCJleHAiOjE1MTM2OTY0NzV9.ENrxMQaNinf9Z7hFiuLsbsGtg26ZnjGyuvhX4kJvuL0`
-    - Respuesta: `{"success":true,"result":[{"_id":"5a36868622474657a5e2405b","nombre":"Macbook Pro 13'","venta":true,"precio":1500,"foto":"images/anuncios/macbook13.png","tags":["work","lifestyle"]}]}`
+    - Respuesta: ` {"success":true,"result":[{"_id":"5a36868622474657a5e2405b","nombre":"Macbook Pro 13'","venta":true,"precio":1500,"foto":"images/anuncios/macbook13.png","tags":["work","lifestyle"]}]}`
 
 ### Lista de Tags
 Devuelve listado de los diferentes Tags disponibles en la Base de Datos
@@ -85,7 +89,7 @@ Devuelve listado de los diferentes Tags disponibles en la Base de Datos
 - Método: **POST**/**GET**
 - Ejemplo:
     - Petición: `http://localhost:3000/apiv1/anuncios/tags`
-    - Respuesta: `{"success":true,"result":["lifestyle","motor","mobile","work"]}`
+    - Respuesta: ` {"success":true,"result":["lifestyle","motor","mobile","work"]}`
 
 ## Desarrolladores
 Tras realizar una modificación en el código, realizar validación de calidad del código mediante:

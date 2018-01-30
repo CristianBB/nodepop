@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <img id="logo" src="./images/logo_keepcoding.png">
+    <title>Nodepop API</title>
+    <link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
+</head>
+
+<body>
+    <h1>Nodepop API</h1>
+    <p>API de servicio para aplicación de compra-venta de artículos de segunda mano.<br> Práctica del VI BootCamp Development Mobile - KeepCoding.</p>
+    <h2>Operaciones permitidas</h2>
+    <p><strong>Nota:</strong> Todas las peticiones admiten la cabecera <em>Accept-Language</em> para especificar el lenguaje de los mensajes de error de respuesta. Los lenguajes admitidos son: <strong>es</strong>(Español), <strong>en</strong>(Inglés). En
+        caso de que la cabecera no sea informada o su valor sea distinto a los lenguajes admitidos, los mensajes de respuesta serán enviados en inglés.</p>
+    <h3>Registro</h3>
+    <p>Realiza el alta de un usuario en la Base de Datos</p>
+    <ul>
+        <li>Url: <strong>/apiv1/usuarios/registro</strong></li>
+        <li>Método: <strong>POST</strong></li>
+        <li>Parámetros Body:
+            <ul>
+                <li><strong>nombre</strong>: (Obligatorio) Nombre del usuario a dar de alta</li>
+                <li><strong>email</strong>: (Obligatorio) Email del usuario a dar de alta</li>
+                <li><strong>clave</strong>: (Obligatorio) Password del usuario a dar de alta</li>
+            </ul>
+        </li>
+        <li>Ejemplo:
+            <ul>
+                <li>Petición: <code>http://nodepop.proyectodev.com/apiv1/usuarios/registro</code></li>
+                <li>Respuesta: <code>{&quot;success&quot;:true}</code></li>
+            </ul>
+        </li>
+    </ul>
+    <h3>Autenticación</h3>
+    <p>Realiza petición de Login en el sistema para obtener Token de usuario, necesario para algunos servicios del API. Devuelve Token de usuario.</p>
+    <ul>
+        <li>Url: <strong>/apiv1/usuarios/authenticate</strong></li>
+        <li>Método: <strong>POST</strong></li>
+        <li>Parámetros Body:
+            <ul>
+                <li><strong>email</strong>: (Obligatorio) Email del usuario a loguear</li>
+                <li><strong>clave</strong>: (Obligatorio) Password del usuario a loguear</li>
+            </ul>
+        </li>
+        <li>Ejemplo:
+            <ul>
+                <li>Petición: <code>http://nodepop.proyectodev.com/apiv1/usuarios/authenticate</code></li>
+                <li>Respuesta: <code>{&quot;success&quot;:true,&quot;result&quot;:&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWEzNjg2ODYyMjQ3NDY1N2E1ZTI0MDVlIiwiaWF0IjoxNTEzNTI2MTU2LCJleHAiOjE1MTM2OTg5NTZ9.Fw18OoAzk2JMRcolXREbzlxCIAD0GCPET3f_X9EvPm0&quot;}</code></li>
+            </ul>
+        </li>
+    </ul>
+    <h3>Lista de Anuncios</h3>
+    <p>Devuelve el listado de anuncios que cumplan las condiciones informadas por parámetros</p>
+    <ul>
+        <li>Url: <strong>/apiv1/anuncios</strong></li>
+        <li>Método: <strong>GET</strong></li>
+        <li>Parámetros Body:
+            <ul>
+                <li><strong>x-access-token</strong>: (Obligatorio) Token de usuario obtenido despues de autenticar. Puede ser informado en el Body o como parámetro query (ver parametro <em>token</em>).</li>
+            </ul>
+        </li>
+        <li>Parámetros Query:
+            <ul>
+                <li><strong>token</strong>: (Obligatorio) Token de usuario obtenido después de autenticar. Puede ser informado como parámetro query o en el Body (ver parámetro <em>x-access-token</em>)</li>
+                <li><strong>start</strong>: (Opcional) Para listados paginados. Indica a partir de qué elemento desea obtener los resultados (por defecto 0).</li>
+                <li><strong>limit</strong>: (Opcional) Número máximo de registros a devolver (por defecto 10)</li>
+                <li><strong>sort</strong>: (Opcional) Indica si se desea obtener el resultado ordenado (ascendente) por un campo concreto (Ejemplo: <code>sort=precio</code>)</li>
+                <li><strong>tags</strong>: (Opcional) Devuelve únicamente elementos que tengan el tag definido. Definir tantas veces como tags deban contener los anuncios a devolver (Ejemplo: <code>tags=lifestyle&amp;tags=motor</code>)</li>
+                <li><strong>venta</strong>: (Opcional) Indica qué tipo de anuncios debe devolver el API (true=Anuncios de venta / false = Anuncios de compra).</li>
+                <li><strong>precio</strong>: (Opcional) Permite indicar el precio exacto o rango de precios de los anuncios a devolver:
+                    <ul>
+                        <li><code>precio=X</code>: Devuelve únicamente anuncios cuyo precio sea igual a “X”</li>
+                        <li><code>precio=X-</code>: Devuelve únicamente anuncios cuyo precio sea mayor o igual a “X”.</li>
+                        <li><code>precio=-X</code>: Devuelve únicamente anuncios cuyo precio sea menor o igual a “X”.</li>
+                        <li><code>precio=X-Y</code>: Devuelve únicamente anuncios cuyo precio esté comprendido entre X e Y.</li>
+                    </ul>
+                </li>
+                <li><strong>nombre</strong>: (Opcional) Indica el nombre por el que deben comenzar los anuncios a devolver</li>
+            </ul>
+        </li>
+        <li>Ejemplo:
+            <ul>
+                <li>Petición: <code>http://nodepop.proyectodev.com/apiv1/anuncios?start=0&amp;limit=5&amp;sort=precio&amp;tags=lifestyle&amp;tags=work&amp;venta=true&amp;precio=-1500&amp;token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWEzNjg2ODYyMjQ3NDY1N2E1ZTI0MDVlIiwiaWF0IjoxNTEzNTIzNjc1LCJleHAiOjE1MTM2OTY0NzV9.ENrxMQaNinf9Z7hFiuLsbsGtg26ZnjGyuvhX4kJvuL0</code></li>
+                <li>Respuesta: <code>{&quot;success&quot;:true,&quot;result&quot;:[{&quot;_id&quot;:&quot;5a36868622474657a5e2405b&quot;,&quot;nombre&quot;:&quot;Macbook Pro 13'&quot;,&quot;venta&quot;:true,&quot;precio&quot;:1500,&quot;foto&quot;:&quot;images/anuncios/macbook13.png&quot;,&quot;tags&quot;:[&quot;work&quot;,&quot;lifestyle&quot;]}]}</code></li>
+            </ul>
+        </li>
+    </ul>
+    <h3>Lista de Tags</h3>
+    <p>Devuelve listado de los diferentes Tags disponibles en la Base de Datos</p>
+    <ul>
+        <li>Url: <strong>/apiv1/anuncios/tags</strong></li>
+        <li>Método: <strong>POST</strong>/<strong>GET</strong></li>
+        <li>Ejemplo:
+            <ul>
+                <li>Petición: <code>http://nodepop.proyectodev.com/apiv1/anuncios/tags</code></li>
+                <li>Respuesta: <code>{&quot;success&quot;:true,&quot;result&quot;:[&quot;lifestyle&quot;,&quot;motor&quot;,&quot;mobile&quot;,&quot;work&quot;]}</code></li>
+            </ul>
+        </li>
+    </ul>
+    <h2>Autor</h2>
+    <p><strong>Cristian Blázquez Bustos</strong></p>
+
+</body>
+
+</html>

@@ -95,8 +95,28 @@ Devuelve listado de los diferentes Tags disponibles en la Base de Datos
 Tras realizar una modificación en el código, realizar validación de calidad del código mediante:
 `npm run eslint`
 
+
+## URLs de acceso para práctica del módulo DevOps
+### Ejercicio 1 - Despliegue de aplicación Node.js
+- Url: https://nodepop.proyectodev.com
+- Descripción: La página principal muestra una breve descripción del funcionamiento de la API usando el dominio de prueba (https://nodepop.proyectodev.com). En dicha página se ha incluído una imagen y se hace uso de una hoja de estilos CSS servidas ambas por NGINX con la cabecera X-Owner: CristianBB. De igual manera, la consulta de las imagenes cuya ruta es devuelta por la API también son devueltas por NGINX.
+
+### Ejercicio 2 - Carga de web estática
+- Url 1: https://34.193.92.49 (Mostrará error de certificado puesto que se ha preparado para el subdominio cristian.proyectodev.com)
+- Url 2: https://cristian.proyectodev.com
+- Descripción: La plantilla utilizada NO proviene de https://startbootstrap.com ya que quería aprovechar para dejar preparada la página de mi CV. En cualquier caso se trata de una web html servida directamente por Nginx. Hasta la corrección de la práctica esta web estará configurada como DEFAULT en Nginx para que el acceso mediante la IP del servidor cargue dicha web. Una vez realizada la corrección, el servidor por defecto será el blog de wordpress (Ver extras)
+
+### Extras
+
+He aprovechado para instalar en la misma instancia una base de datos MariaDB, el interprete de PHP y configurar Nginx para que el acceso mediante el dominio principal cargue un blog de Wordpress.
+- Url: https://www.proyectodev.com/
+- Descripción: He instalado el plugin de Wordpress Supercache, que se encarga de generar contenido estático para agilizar la carga de las páginas. Aprovechando ésto se han definido reglas en NGINX para que el contenido estático sea devuelto directamente por NGINX con la misma cabecera X-Owner: CristianBB del primer Ejercicio.
+
+
+
 ## Changelog
 - 0.0.1: Versión inicial del API
+- 0.0.2: Añadida información correspondiente a la práctica del módulo de DevOps
 
 ## Autor
 **Cristian Blázquez Bustos**
